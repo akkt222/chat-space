@@ -1,0 +1,35 @@
+!!!
+%htmly
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ChatSpace
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .side_bar
+      .side_topbar
+        seo
+        -#link_to編集アイコンfontawesome
+        -#link_to設定アイコンfontawesome
+      .side_content
+        -#eachでグループ一覧をいつかもってくる
+        サンプル
+        よろしくお願いします
+    .content
+      .top-bar
+        サンプル
+        member: seo neko
+      .messages
+        -#いつかeachにする
+        seo 
+        2017-05-18 13:19:51 UTC
+        はじめまして
+        neko
+        2017-05-18 13:19:51 UTC
+        Good bye world!
+      .type_message
+        type a message
+        -#ここはjs?
+        -#link_to画像選択
+        -#link_tosend
