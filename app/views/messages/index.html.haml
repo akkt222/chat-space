@@ -7,29 +7,49 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .side_bar
-      .side_topbar
-        seo
-        -#link_to編集アイコンfontawesome
-        -#link_to設定アイコンfontawesome
-      .side_content
-        -#eachでグループ一覧をいつかもってくる
-        サンプル
-        よろしくお願いします
-    .content
-      .top-bar
-        サンプル
-        member: seo neko
-      .messages
-        -#いつかeachにする
-        seo 
-        2017-05-18 13:19:51 UTC
-        はじめまして
-        neko
-        2017-05-18 13:19:51 UTC
-        Good bye world!
-      .type_message
-        type a message
-        -#ここはjs?
-        -#link_to画像選択
-        -#link_tosend
+    .flash-box
+    .wrapper
+      .chat-side
+        .side-header
+          .side-header__box
+            %p.side-header__box__user-name
+              username
+            %ul.side-header__box__menu
+              %li.side-header__box__menu__new-group
+                =link_to do
+                  %i.fa.fa-edit
+              %li.side-header__box__menu__edit-user
+                =link_to do
+                  %i.fa.fa-cog
+        .groups
+          .group
+            %p.group__group-name 
+              groupname
+            %p.group__latest-message 
+              まだメッセージがありません
+      .chat-main
+        .main-header
+          .main-header__left-box
+            %h2.main-header__left-box__current-group
+              groupname
+            %ul.main-header__left-box__member-list
+              Member：aaa
+          .main-header__edit-btn 
+            Edit
+        .messages
+          .messages__upper-info
+            %i.messages__upper-info__talker
+              username
+            %i.messages__upper-info__date
+              2019/11/13(Wed) 21:06:26
+          .messages__text
+            このテキストはサンプルです
+        .form
+          %form#new_message.new_message{"accept-charset" => "UTF-8", :method => "post"}
+            %input{:name => "utf8", :type => "hidden", :value => "✓"}
+            .input-box
+              %input.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}
+              %label.input-box__image{:for => "message_image"}
+                %i.fa.fa-image
+                //%input.input-box__image__file{:name => "message[image]", :type => "file"}/
+            %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
