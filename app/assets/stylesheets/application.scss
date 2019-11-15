@@ -1,0 +1,164 @@
+@import "./reset";
+@import "./variable";
+@import "font-awesome";
+
+.chat-side{
+  width: 300px;
+  float: left;
+  color: $font_white;
+  height: 100vh;
+
+  .side-header{
+    background-color: $background_top;
+    height: 100px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+
+    &__box{
+      justify-content: space-between;
+      width: 100%;
+      font-weight: bold;
+      display: flex;
+      font-size: 17px;
+
+      &__menu{
+        display: flex;
+        font-size: 0.95em;
+        list-style: none;
+      }
+      .fa{
+        color: $font_white;
+        padding: 2px;
+      }
+    }
+
+  }
+  .groups{
+    background-color: $background_bottom;
+    height: calc(100vh - 122px);
+    padding: 20px 20px 0;
+    
+      .group{
+        color: $font_white;
+        
+        &__group-name{
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+
+        &__latest-message{
+          font-size: 11px;
+        }
+      }
+  }
+}
+
+.chat-main{
+  width: calc(100vh - 280px);
+  float: left;
+
+  .main-header{
+    background-color: white;
+    padding-left: 40px;
+    display: flex;
+
+    &__left-box{
+      margin-top: 35px;
+
+      &__current-group{
+        font-size: 20px;
+        color: $font_black;
+        margin-bottom: 15px;
+      }
+      
+      &__member-list{
+        font-size: 12px;
+        color: $font_gray;
+      }
+    }
+
+    &__edit-btn{
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      border: solid 1px $light-blue;
+      margin-top: 28px;
+      float: right;
+      right: 40px;
+      position: absolute;
+      color: $light-blue;
+    }
+  }
+  
+  .messages{
+    padding: 46px 40px; 
+    background-color: $background_gray;
+    float: left;
+    width: calc(100vw - 300px);
+    overflow: scroll;
+    height: calc(100vh - 280px);
+
+    &__upper-info{
+      margin-bottom: 10px;
+      display: flex;
+
+      &__talker{
+        color: $font_black;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__date{
+        color: $font_gray;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+    }
+    &__text{
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: $font_black;
+    }
+  }
+
+  form{
+    height: 47px;
+    background-color: $input_gray;
+    width: calc(100vw - 300px);
+    padding: 20px 40px;
+    display: flex;
+
+    .input-box {
+      position: relative;
+      width: 100%;
+      
+      &__text{
+        height: 50px;
+        width: calc(100% - 140px);
+        padding: 0 40px 0 10px;
+      }
+
+      &__image{
+        display: flex;
+        font-size: 21px;
+
+        .fa{
+          position: absolute;
+          top: 15px;
+          right: 100px;
+        }
+      }
+    }
+    .submit-btn{
+      width: 100px;
+      height: 52px;
+      padding: 0 20px;
+      background-color: $light_blue;
+      color: $font_white;
+      cursor: pointer;
+      position: relative;
+      right: 60px;
+      
+    }
+  }
+}
