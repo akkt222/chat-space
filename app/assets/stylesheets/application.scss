@@ -93,7 +93,11 @@
       float: right;
       right: 40px;
       position: absolute;
-      color: $light-blue;
+
+      &__text{
+      text-decoration: none;
+      color: $light_blue;
+      }
     }
   }
   
