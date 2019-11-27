@@ -4,9 +4,9 @@
       %h2.main-header__left-box__current-group
         groupname
       %ul.main-header__left-box__member-list
-        Member：aaa
-    .main-header__edit-btn 
-      = link_to "/groups/:id/edit" do
+        Member: mada
+    .main-header__edit-btn
+      = link_to "/groups/:id/edit", class:"main-header__edit-btn__text" do 
         Edit
   .messages
     .messages__upper-info
@@ -17,6 +17,8 @@
     .messages__text
       このテキストはサンプルです
   .form
+
+
     %form#new_message.new_message{"accept-charset" => "UTF-8", :method => "post"}
       %input{:name => "utf8", :type => "hidden", :value => "✓"}
       .input-box
