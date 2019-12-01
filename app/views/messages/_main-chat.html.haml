@@ -16,14 +16,14 @@
         2019/11/13(Wed) 21:06:26
     .messages__text
       このテキストはサンプルです
+
+
+
   .form
-
-
-    %form#new_message.new_message{"accept-charset" => "UTF-8", :method => "post"}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}
-      .input-box
-        %input.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}
-        %label.input-box__image{:for => "message_image"}
-          %i.fa.fa-image
-          //%input.input-box__image__file{:name => "message[image]", :type => "file"}/
-      %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+  = form_for [@group, @message] do |f|
+    .input-box
+      = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+      = f.label :image, class: 'input-box__image' do
+        %i.fa.fa-image
+        = f.file_field :image, class: 'hidden'
+    = f.submit 'Send', class: 'submit-btn'
