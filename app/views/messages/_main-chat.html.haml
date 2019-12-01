@@ -9,13 +9,7 @@
       = link_to "/groups/:id/edit", class:"main-header__edit-btn__text" do 
         Edit
   .messages
-    .messages__upper-info
-      %i.messages__upper-info__talker
-        username
-      %i.messages__upper-info__date
-        2019/11/13(Wed) 21:06:26
-    .messages__text
-      このテキストはサンプルです
+    = render @messages
 
 
 
