@@ -2,10 +2,12 @@ $(function(){
   $(".new_message").on("submit", function(e){
     e.preventDefault()
     console.log("イベント薄荷");
+    var formdata = new FormData(this);
+    var url = $(this).attr("action");
     $.ajax({
-      url: 取得したリクエストURL,  //同期通信でいう『パス』
+      url: url,  //同期通信でいう『パス』
       type: 'POST',  //同期通信でいう『HTTPメソッド』
-      data: 取得したFormData,  
+      data: FormData,
       dataType: 'json',
       processData: false,
       contentType: false
