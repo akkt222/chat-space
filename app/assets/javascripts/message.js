@@ -57,10 +57,18 @@ $(function(){
       contentType: false
     })
     .done(function(message) {
+      function scrollBottom(){
+        var target = $('.message').last();
+        var position = target.offset().top + $('.messages').scrollTop();
+        $('.messages').animate({
+          scrollTop: position
+        }, 300, 'swing');
+      }
       console.log(message);
       var html = buildHTML(message);
       $('.messages').append(html);
-      // $('').val('');resetにする
+      $('form').get(0).reset();
+      scrollBottom();
     })
     .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
