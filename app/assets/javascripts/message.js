@@ -1,43 +1,42 @@
 $(function(){
 
   function buildHTML(message){
-    // 「もしメッセージに画像が含まれていたら」という条件式
     if (message.image) {
       var html = `
       <div class="message">
-      <div class="messages__upper-info">
-      <div class="messages__upper-info__talker">
-      ${message.name}
-      </div>
-      <div class="messages__upper-info__date">
-      ${message.created_at}
-      </div>
-      </div>
-      <div class="messages__text">
-      <p class="messages__text__content">
-      ${message.content}
-      </p>
-      <img class="messages__text__image" src="${message.image}">
-      </div>
+        <div class="messages__upper-info">
+          <div class="messages__upper-info__talker">
+            ${message.name}
+          </div>
+          <div class="messages__upper-info__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="messages__text">
+          <p class="messages__text__content">
+            ${message.content}
+          </p>
+          <img class="messages__text__image" src="${message.image}">
+        </div>
       </div>
       `
     } else {
-      var html = 
+      var html =
       `
       <div class="message">
-      <div class="messages__upper-info">
-      <div class="messages__upper-info__talker">
-      ${message.name}
-      </div>
-      <div class="messages__upper-info__date">
-      ${message.created_at}
-      </div>
-      </div>
-      <div class="messages__text">
-      <p class="messages__text__content">
-      ${message.content}
-      </p>
-      </div>
+        <div class="messages__upper-info">
+          <div class="messages__upper-info__talker">
+            ${message.name}
+          </div>
+          <div class="messages__upper-info__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="messages__text">
+          <p class="messages__text__content">
+            ${message.content}
+          </p>
+        </div>
       </div>
       `
     }
