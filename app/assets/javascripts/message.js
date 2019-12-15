@@ -43,6 +43,13 @@ $(function(){
     }
     return html
   }
+  function scrollBottom(){
+    var target = $('.message').last();
+    var position = target.offset().top + $('.messages').scrollTop();
+    $('.messages').animate({
+      scrollTop: position
+    }, 300, 'swing');
+  }
   $(".new_message").on("submit", function(e){
     e.preventDefault()
     var fd = new FormData(this);
@@ -56,14 +63,6 @@ $(function(){
       contentType: false
     })
     .done(function(message) {
-      function scrollBottom(){
-        var target = $('.message').last();
-        var position = target.offset().top + $('.messages').scrollTop();
-        $('.messages').animate({
-          scrollTop: position
-        }, 300, 'swing');
-      }
-      console.log(message);
       var html = buildHTML(message);
       $('.messages').append(html);
       $('form').get(0).reset();
