@@ -1,9 +1,30 @@
 $(function(){
 
-  function buildHTML(message){
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.messages').append(insertHTML);
+      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+
+  var buildHTML = function(message) {
     if (message.image) {
       var html = `
-      <div class="message">
+      <div class="message" data-message-id= ${message.id}>
         <div class="messages__upper-info">
           <div class="messages__upper-info__talker">
             ${message.name}
@@ -23,7 +44,7 @@ $(function(){
     } else {
       var html =
       `
-      <div class="message">
+      <div class="message" data-message-id= ${message.id}>
         <div class="messages__upper-info">
           <div class="messages__upper-info__talker">
             ${message.name}
@@ -40,8 +61,8 @@ $(function(){
       </div>
       `
     }
-    return html
-  }
+    return html;
+  };
   function scrollBottom(){
     var target = $('.message').last();
     var position = target.offset().top + $('.messages').scrollTop();
@@ -53,6 +74,7 @@ $(function(){
     e.preventDefault()
     var fd = new FormData(this);
     var url = $(this).attr("action");
+
     $.ajax({
       url: url,
       type: 'POST',
@@ -74,4 +96,8 @@ $(function(){
       $('.submit-btn').prop('disabled', false);
     })
   })
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
+  
 });
