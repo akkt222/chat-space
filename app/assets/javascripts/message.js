@@ -14,7 +14,7 @@ $(function(){
         insertHTML += buildHTML(message)
       });
       $('.messages').append(insertHTML);
-      $('.messages').animate({ scrollBottom: $('.messages')[0].scrollHeight});
+      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function() {
       console.log('error');
@@ -24,7 +24,7 @@ $(function(){
   var buildHTML = function(message) {
     if (message.image) {
       var html = `
-      <div class="message">
+      <div class="message" data-message-id= ${message.id}>
         <div class="messages__upper-info">
           <div class="messages__upper-info__talker">
             ${message.name}
@@ -44,7 +44,7 @@ $(function(){
     } else {
       var html =
       `
-      <div class="message">
+      <div class="message" data-message-id= ${message.id}>
         <div class="messages__upper-info">
           <div class="messages__upper-info__talker">
             ${message.name}
